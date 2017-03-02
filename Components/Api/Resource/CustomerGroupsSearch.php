@@ -17,17 +17,33 @@ class CustomerGroupsSearch extends CustomerGroupResource
     {
         $this->checkPrivilege('read');
 
-        $allCustomerGroups = $this->getRepository()->findAll();
+        $builder = $this->getRepository()->createQueryBuilder('customerGroup')
+            ->select('customerGroup', 'd')
+            ->leftJoin('customerGroup.discounts', 'd');
 
-        $allCustomerGroupsIds = [];
+        $builder->addFilter($criteria)
+            ->addOrderBy($orderBy)
+            ->setFirstResult($offset)
+            ->setMaxResults($limit);
 
-        /**
-         * @var CustomerGroup $customerGroup
-         */
-        foreach($allCustomerGroups as $customerGroup){
-            $allCustomerGroupsIds[] = $customerGroup->getId();
+        $builder->select('customerGroup.id');
+
+        $query = $builder->getQuery();
+        $query->setHydrationMode($this->resultMode);
+
+        $paginator = $this->getManager()->createPaginator($query);
+
+        //returns the total count of the query
+        $totalResult = $paginator->count();
+
+        //returns the category data
+        $customerGroups = $paginator->getIterator()->getArrayCopy();
+
+        $customerGroupIds = [];
+        foreach ($customerGroups as $key => $customerGroup){
+            $customerGroupIds[$key] = $customerGroup['id'];
         }
 
-        return $allCustomerGroupsIds;
+        return array('data' => $customerGroupIds, 'total' => $totalResult);
     }
 }

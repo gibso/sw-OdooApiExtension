@@ -17,17 +17,31 @@ class ShopsSearch extends ShopResource
   {
       $this->checkPrivilege('read');
 
-      $allShops = $this->getRepository()->findAll();
+      $builder = $this->getRepository()->createQueryBuilder('shop');
 
-      $allShopsIds = [];
+      $builder->addFilter($criteria)
+          ->addOrderBy($orderBy)
+          ->setFirstResult($offset)
+          ->setMaxResults($limit);
 
-      /**
-       * @var Shop $shop
-       */
-      foreach($allShops as $shop){
-          $allShopsIds[] = $shop->getId();
+      $builder->select('shop.id');
+
+      $query = $builder->getQuery();
+      $query->setHydrationMode($this->resultMode);
+
+      $paginator = $this->getManager()->createPaginator($query);
+
+      //returns the total count of the query
+      $totalResult = $paginator->count();
+
+      //returns the category data
+      $shops = $paginator->getIterator()->getArrayCopy();
+
+      $shopIds = [];
+      foreach ($shops as $key => $shop){
+          $shopIds[$key] = $shop['id'];
       }
 
-      return $allShopsIds;
+      return array('data' => $shopIds, 'total' => $totalResult);
   }
 }

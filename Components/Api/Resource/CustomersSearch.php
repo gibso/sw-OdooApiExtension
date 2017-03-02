@@ -4,8 +4,6 @@ namespace Shopware\Components\Api\Resource;
 
 use Shopware\Components\Api\Exception as ApiException;
 use Shopware\Components\Api\Resource\Customer as CustomerResource;
-use Shopware\Models\Customer\Customer as CustomerGroup;
-use Shopware\Models\Customer\Customer;
 
 /**
  * Class CustomersSearch
@@ -18,17 +16,32 @@ class CustomersSearch extends CustomerResource
     {
         $this->checkPrivilege('read');
 
-        /**
-         * @var Customer[] $allCustomers
-         */
-        $allCustomers = $this->getRepository()->findAll();
+        $builder = $this->getRepository()->createQueryBuilder('customer');
 
-        $allCustomersIds = [];
+        $builder->addFilter($criteria);
+        $builder->addOrderBy($orderBy);
+        $builder->setFirstResult($offset)
+            ->setMaxResults($limit);
 
-        foreach($allCustomers as $customer){
-            $allCustomersIds[] = $customer->getId();
+        $builder->select('customer.id');
+
+        $query = $builder->getQuery();
+
+        $query->setHydrationMode($this->getResultMode());
+
+        $paginator = $this->getManager()->createPaginator($query);
+
+        //returns the total count of the query
+        $totalResult = $paginator->count();
+
+        //returns the customer data
+        $customers = $paginator->getIterator()->getArrayCopy();
+
+        $customerIds = [];
+        foreach ($customers as $key => $customer){
+            $customerIds[$key] = $customer['id'];
         }
 
-        return $allCustomersIds;
+        return ['data' => $customerIds, 'total' => $totalResult];
     }
 }
