@@ -3,10 +3,10 @@
 /**
  * Class Shopware_Controllers_Api_CustomerGroupsSearch
  */
-class Shopware_Controllers_Api_CustomerGroupsSearch extends Shopware_Controllers_Api_Rest
+class Shopware_Controllers_Api_CustomerGroupsSearch extends Shopware_Controllers_Api_CustomerGroups
 {
     /**
-     * @var Shopware\Components\Api\Resource\CustomerGroup
+     * @var Shopware\Components\Api\Resource\CustomerGroupsSearch
      */
     protected $resource;
 

@@ -1,22 +1,22 @@
 <?php
 
 /**
- * Class Shopware_Controllers_Api_ShopsSearch
+ * Class Shopware_Controllers_Api_CustomersSearch
  */
-class Shopware_Controllers_Api_ShopsSearch extends Shopware_Controllers_Api_Shops
+class Shopware_Controllers_Api_CustomersSearch extends Shopware_Controllers_Api_Customers
 {
     /**
-     * @var Shopware\Components\Api\Resource\ShopsSearch
+     * @var Shopware\Components\Api\Resource\CustomersSearch
      */
     protected $resource;
 
     public function init()
     {
-        $this->resource = \Shopware\Components\Api\Manager::getResource('ShopsSearch');
+        $this->resource = \Shopware\Components\Api\Manager::getResource('CustomersSearch');
     }
 
     /**
-     * GET Request on /api/ShopsSearch
+     * GET Request on /api/CustomersSearch
      */
     public function indexAction()
     {

@@ -17,6 +17,8 @@ class OdooApiExtension extends Plugin
         return [
             'Enlight_Controller_Dispatcher_ControllerPath_Api_ShopsSearch' => 'onGetShopsSearchApiController',
             'Enlight_Controller_Dispatcher_ControllerPath_Api_CustomerGroupsSearch' => 'onGetCustomerGroupsSearchApiController',
+            'Enlight_Controller_Dispatcher_ControllerPath_Api_CustomersSearch' => 'onGetCustomersSearchApiController',
+            'Enlight_Controller_Dispatcher_ControllerPath_Api_CustomersExtended' => 'onGetCustomersExtendedApiController',
             'Enlight_Controller_Front_StartDispatch' => 'onEnlightControllerFrontStartDispatch'
         ];
     }
@@ -35,6 +37,22 @@ class OdooApiExtension extends Plugin
     public function onGetCustomerGroupsSearchApiController()
     {
         return $this->getPath() . '/Controllers/Api/CustomerGroupsSearch.php';
+    }
+
+    /**
+     * @return string
+     */
+    public function onGetCustomersSearchApiController()
+    {
+        return $this->getPath() . '/Controllers/Api/CustomersSearch.php';
+    }
+
+    /**
+     * @return string
+     */
+    public function onGetCustomersExtendedApiController()
+    {
+        return $this->getPath() . '/Controllers/Api/CustomersExtended.php';
     }
 
     /**
