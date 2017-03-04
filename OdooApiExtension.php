@@ -20,6 +20,7 @@ class OdooApiExtension extends Plugin
             'Enlight_Controller_Dispatcher_ControllerPath_Api_CustomersSearch' => 'onGetCustomersSearchApiController',
             'Enlight_Controller_Dispatcher_ControllerPath_Api_CustomersExtended' => 'onGetCustomersExtendedApiController',
             'Enlight_Controller_Dispatcher_ControllerPath_Api_AddressesSearch' => 'onGetAddressesSearchApiController',
+            'Enlight_Controller_Dispatcher_ControllerPath_Api_CategoriesSearch' => 'onGetCategoriesSearchApiController',
             'Enlight_Controller_Front_StartDispatch' => 'onEnlightControllerFrontStartDispatch'
         ];
     }
@@ -64,6 +65,13 @@ class OdooApiExtension extends Plugin
         return $this->getPath() . '/Controllers/Api/AddressesSearch.php';
     }
 
+    /**
+     * @return string
+     */
+    public function onGetCategoriesSearchApiController()
+    {
+        return $this->getPath() . '/Controllers/Api/CategoriesSearch.php';
+    }
 
     /**
      *
