@@ -3,14 +3,14 @@
 namespace Shopware\Components\Api\Resource;
 
 use Shopware\Components\Api\Exception as ApiException;
-use Shopware\Components\Api\Resource\Category as AddressResource;
+use Shopware\Components\Api\Resource\Category as CategoryResource;
 
 /**
  * Class CategoriesSearch
  *
  * @package Shopware\Components\Api\Resource
  */
-class CategoriesSearch extends AddressResource
+class CategoriesSearch extends CategoryResource
 {
     /**
      * @param int $offset
@@ -35,8 +35,8 @@ class CategoriesSearch extends AddressResource
         $categories = $paginator->getIterator()->getArrayCopy();
 
         $categoriesIds = [];
-        foreach ($categories as $key => $address){
-            $categoriesIds[$key] = $address['id'];
+        foreach ($categories as $key => $category){
+            $categoriesIds[$key] = $category['id'];
         }
 
         return array('data' => $categoriesIds, 'total' => $totalResult);
