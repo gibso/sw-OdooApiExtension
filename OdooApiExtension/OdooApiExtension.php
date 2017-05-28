@@ -23,6 +23,7 @@ class OdooApiExtension extends Plugin
             'Enlight_Controller_Dispatcher_ControllerPath_Api_CategoriesSearch' => 'onGetCategoriesSearchApiController',
             'Enlight_Controller_Dispatcher_ControllerPath_Api_ArticlesSearch' => 'onGetArticlesSearchApiController',
             'Enlight_Controller_Dispatcher_ControllerPath_Api_VariantsSearch' => 'onGetVariantsSearchApiController',
+            'Enlight_Controller_Dispatcher_ControllerPath_Api_OrdersSearch' => 'onGetOrdersSearchApiController',
             'Enlight_Controller_Front_StartDispatch' => 'onEnlightControllerFrontStartDispatch'
         ];
     }
@@ -89,6 +90,14 @@ class OdooApiExtension extends Plugin
     public function onGetVariantsSearchApiController()
     {
         return $this->getPath() . '/Controllers/Api/VariantsSearch.php';
+    }
+
+    /**
+     * @return string
+     */
+    public function onGetOrdersSearchApiController()
+    {
+        return $this->getPath() . '/Controllers/Api/OrdersSearch.php';
     }
 
     /**
