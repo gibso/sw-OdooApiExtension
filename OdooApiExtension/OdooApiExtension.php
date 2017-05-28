@@ -100,9 +100,6 @@ class OdooApiExtension extends Plugin
         return $this->getPath() . '/Controllers/Api/OrdersSearch.php';
     }
 
-    /**
-     *
-     */
     public function onEnlightControllerFrontStartDispatch()
     {
         $this->container->get('loader')->registerNamespace('Shopware\Components', $this->getPath() . '/Components/');

@@ -9,6 +9,7 @@ use Shopware\Components\Api\Exception as ApiException;
 
 /**
  * Class CustomersExtended
+ *
  * @package Shopware\Components\Api\Resource
  */
 class CustomersExtended extends CustomerResource

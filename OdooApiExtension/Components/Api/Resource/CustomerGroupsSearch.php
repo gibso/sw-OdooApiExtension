@@ -2,9 +2,7 @@
 
 namespace Shopware\Components\Api\Resource;
 
-use Shopware\Components\Api\Exception as ApiException;
 use Shopware\Components\Api\Resource\CustomerGroup as CustomerGroupResource;
-use Shopware\Models\Customer\Group as CustomerGroup;
 
 /**
  * Class CustomerGroupsSearch

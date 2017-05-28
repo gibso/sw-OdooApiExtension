@@ -2,9 +2,7 @@
 
 namespace Shopware\Components\Api\Resource;
 
-use Shopware\Components\Api\Exception as ApiException;
 use Shopware\Components\Api\Resource\Shop as ShopResource;
-use Shopware\Models\Shop\Shop;
 
 /**
  * Class ShopsSearch
