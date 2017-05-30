@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../engine/Shopware/Components/Plugin/schema/plugin.xsd">
+
+    <label lang="de">Odoo-Konnektor API Erweiterung</label>
+    <label lang="en">Odoo-Connector API Extension</label>
+
+    <version>1.0.0</version>
+    <link>https://github.com/gibso</link>
+    <author>Oliver Görtz</author>
+    <compatibility minVersion="5.2.0" />
+
+    <description lang="de">
+        Das Plugin dient zur Erweiterung der REST API von Shopware für den Shopware-Odoo-Konnektor.
+        Der Shopware-Odoo-Konnekor und dieses Plugin sind auf GitHub verfügbar.
+        Dieses Plugin: https://github.com/gibso/sw-OdooApiExtension
+        Odoo-Modul des Konnektors: https://github.com/gibso/Odoo-Shopware-Connector
+    </description>
+    <description lang="de">
+        This Plugin extends shopwarer REST API for the Shopware-Odoo-Connector.
+        The Shopware-Odoo-Connector and this Plugin are available on GitHub.
+    </description>
+
+    <changelog version="1.0.0">
+        <changes lang="de">Erstveröffentlichung</changes>
+        <changes lang="en">First release</changes>
+    </changelog>
+
+</plugin>

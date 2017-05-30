@@ -1,11 +1,10 @@
 <?php
 
 /**
- * Class Customers
+ * Class Shopware_Controllers_Api_CustomersExtended
  */
 class Shopware_Controllers_Api_CustomersExtended extends Shopware_Controllers_Api_Customers
 {
-
     /**
      * @var Shopware\Components\Api\Resource\CustomersExtended
      */
